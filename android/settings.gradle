@@ -1,6 +1,32 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'RNTask'
-include ':app'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+    }
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+}
+
+plugins {
+    id("com.facebook.react.settings") // React Native settings plugin
+}
+
+rootProject.name = 'RNTask' // Project name
+
+include ':app' // Includes the app module
+
+// Optionally include other modules or dependencies
 includeBuild('../node_modules/@react-native/gradle-plugin')
+
+// Autolink React Native libraries if needed (Optional, based on your configuration)
+gradle.ext.react = [
+    enableHermes: true, // If Hermes should be enabled
+]
+
+// Optional: Configure React Native settings extension
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    ex.autolinkLibrariesFromCommand()
+}
+
+// If the above code throws errors, you can comment out or remove the extension part as below:
+// extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
