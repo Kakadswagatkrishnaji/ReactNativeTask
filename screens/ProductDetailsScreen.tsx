@@ -75,6 +75,9 @@ const ProductDetailsScreen = ({route}) => {
         </Card.Content>
       </Card>
 
+
+
+
       {/* Card for Product Description */}
       <Card style={styles.card}>
         <Card.Content>
